@@ -4,23 +4,32 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-quip="X-UA-Compatible" content="ie=edge">
-        <title>OpenAPI</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <title>Weather Forecast</title>
     </head>
-    <body>
-
-        <div class="input">
-            <input type="text" class="inputValue" placeholder="Enter a City">
-            <input type="Submit" value="Submit" class="button">
-        </div>
-
-        <div class="display">
-            <h1 class="name"></h1>
-            <p class="desc"></p>
-            <p class="temp"></p>
-        </div>
-
-        <script src="app.js">
-
-        </script>
-    </body>
-</html>
+    <body class="bg-white bg-gradient">
+        <!-- Navbar -->
+        <header class="navbar navbar-light" style="background-color: #f0d53d;">
+            <a class="bg-gradient text-white m-2 p-4 navbar-brand text-center ">Weather Dashboard</a>
+        </header>
+    
+        <!-- Results -->
+        <main class="container m-0 p-0">
+            <!-- Search bar-->
+            <div class="row col-12">
+                <aside class="bg-transparent">
+                    <div class="card-body bg-transparent">
+                        <h5 class="card-title text-dark">Search for a City :</h5>
+                        <form class="form-inline">
+                            <input id="textInput" autofocus class="col-8 form-control mr-sm-2" type="search"
+                                placeholder="Enter a City" aria-label="Search">
+                            <button id="search-btn" class="col-3 btn btn-light my-2"
+                                style="background-color: #c1dcf0;" type="submit">Search</button>
+                        </form>
+                        <h5 class="card-title text-dark mt-2"  id="search-bar">Previous Searches :</h5>
+                        <ul class="list-group">
+                        </ul>
+                    </div>
+                </aside>
+    
+    
