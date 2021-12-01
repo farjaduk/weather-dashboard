@@ -49,3 +49,43 @@ var getWeatherData = function(city){
         }
     });
 }
+
+var displayMainStats = function(name,temp,wind,humidity,uvLat,uvLon,icon){
+    var uviUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat='+ uvLat + '&lon='+ uvLon + '&units=metric&dt=1586468027&appid=ad9c3547a99abdff7cc27c4cfd8394ae';
+    fetch(uviUrl).then(function(response){
+        if(response.ok){
+            response.json().then(function(data){
+                var currUvi = data.current.uvi;
+                
+                //uv index color indicator
+                if(currUvi >= 7){
+                    cityUvEl.classList = "badge bg-danger";
+                    cityUvEl.textContent = currUvi;
+                }
+
+                else if(currUvi < 7 && currUvi > 2) {
+                    cityUvEl.classList = "badge bg-warning";
+                    cityUvEl.textContent = currUvi;
+
+                } 
+                else {
+                    cityUvEl.classList = "badge bg-success";
+                    cityUvEl.textContent = currUvi;
+                } 
+
+                displayFutureForecast(data);
+                
+            })
+        }
+    })
+    console.log(icon);
+    cityNameEl.textContent = name + " (" + moment().format("MM/DD/YYYY") + ")";
+    cityTempEl.textContent = temp + " °C "
+    cityWindEl.textContent = wind + " Km/h";
+    cityHumidityEl.textContent = humidity + " %";
+    inputValueEl.value = "";
+    var displayIconEl = document.createElement("img")
+    displayIconEl.src = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
+    cityNameEl.appendChild(displayIconEl);
+
+}
